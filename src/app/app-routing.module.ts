@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,12 @@ const routes: Routes = [
         data: { title: 'Session'}
       }
     ]
+  },
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    children: []
   },
   {
     path: '**',
