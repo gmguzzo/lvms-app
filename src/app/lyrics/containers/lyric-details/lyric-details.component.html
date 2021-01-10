@@ -1,6 +1,26 @@
 <mat-card>
   <mat-card-title class='h1'>Mais que um mero poema</mat-card-title>
   <mat-card-subtitle class='h2'>Rosa de Saron</mat-card-subtitle>
-  <mat-card-content class='margin-top-16' [innerHTML]='chord'>
+  <div (mouseover)='listenChords($event)'>
+    <mat-card-content class='margin-top-16' [innerHTML]='chord'>
+    </mat-card-content>
+  </div>
+  <mat-card-content class='margin-top-16' fxLayout='row wrap' fxLayoutGap='8px'>
+    <div fxLayout='row wrap' fxFlex='100' class='chords-svg' *ngFor='let chord of listChordConfig'>
+      <div fxFlex='50'>
+        <div [id]='"chord-"+chord.chordApi.id'></div>
+      </div>
+      <div fxFlex='50' fxLayout='column' fxLayoutGap='8px'>
+        <h2 class='h2'> config</h2>
+        <div> {{ chord.chord | json}}</div>
+        <h2 class='h2'> api</h2>
+        <div> {{ chord.chordApi | json}}</div>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>
+
+<div class='chord-position'>
+  <div id='#chord-hover-selected'>
+  </div>
+</div>

@@ -1,17 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+
 import ChordSheetJS from 'chordsheetjs';
+import { SvguitarchordService } from '../../services/svguitarchord.service';
+import { ChordsModel } from '../../../shared/models/chords.model';
 
 @Component({
   selector: 'lyric-details',
   templateUrl: './lyric-details.component.html',
   styleUrls: ['./lyric-details.component.scss']
 })
-export class LyricDetailsComponent implements OnInit {
+export class LyricDetailsComponent implements OnInit, AfterViewInit {
 
   chord: string | undefined;
   lyric = lyricDemo;
+  listChords: ChordsModel[] = listChords.chords;
+  listChordConfig: any[] = [];
+  chordElement: any;
 
-  constructor() {
+  constructor(private svguitarchordService: SvguitarchordService) {
   }
 
   ngOnInit(): void {
@@ -22,8 +28,266 @@ export class LyricDetailsComponent implements OnInit {
     const formatter = new ChordSheetJS.HtmlDivFormatter();
     this.chord = formatter.format(song);
 
+
+    setTimeout(() => {
+      this.listChordConfig = this.listChords.map(chordItem => {
+        const chordConfig = this.svguitarchordService.formatChord(chordItem);
+        const { chordApi, chord } = chordConfig;
+        this.svguitarchordService.getChord(chord, chordApi?.id);
+        return chordConfig;
+      });
+    });
+  }
+
+  ngAfterViewInit() {
+    this.setElementChord();
+  }
+
+  listenChords(event: { clientX: any; clientY: any; }) {
+    const elementMouseIsOver = document.elementFromPoint(event.clientX, event.clientY);
+    if (
+      elementMouseIsOver &&
+      elementMouseIsOver.classList.contains('chord') &&
+      elementMouseIsOver.textContent &&
+      elementMouseIsOver.textContent !== '') {
+
+      // tslint:disable-next-line:triple-equals
+      const chord = this.listChords.find(f => f.symbol == this.capitalize(elementMouseIsOver.textContent));
+      if (chord && chord.id) {
+        const { x, y } = elementMouseIsOver.getBoundingClientRect();
+
+        const chordElement = document.getElementById(`chord-${ chord.id }`);
+        const html = chordElement?.innerHTML;
+        if (html) {
+          this.setPositionChord('block', 'fixed', x, (y - 150), html);
+        }
+        return;
+      }
+    }
+    this.setPositionChord();
+  }
+
+  private setPositionChord(display = 'none', position = 'fixed', x = -1, y = -1, html = '') {
+    this.chordElement.style.display = display;
+    this.chordElement.style.position = position;
+    this.chordElement.style.left = x + 'px';
+    this.chordElement.style.top = y + 'px';
+    this.chordElement.innerHTML = html;
+  }
+
+  private setElementChord() {
+    const chordElements = document.getElementsByClassName('chord-position');
+    // @ts-ignore
+    const [chordElement] = chordElements;
+    this.chordElement = chordElement;
+  }
+
+  private capitalize(txt: string | null, allWords?: boolean): string {
+    if (txt) {
+      if (allWords) {
+        return txt.split(' ').map(word => this.capitalize(word)).join(' ');
+      }
+      return txt.charAt(0).toUpperCase() + txt.slice(1);
+    }
+    return '';
   }
 }
+
+const listChords: any = {
+  chords: [
+    {
+      id: 22621,
+      symbol: 'G#m',
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1, 6],
+      diagram: [[1, 2], [1, 5], [2, 4]]
+    },
+    {
+      id: 22622,
+      symbol: 'E',
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1, 6],
+      diagram: [[1, 2], [1, 5], [2, 4]]
+    },
+    {
+      id: 22623,
+      symbol: 'C#m',
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1, 6],
+      diagram: [[1, 2], [1, 5], [2, 4]]
+    },
+    {
+      id: 22624,
+      symbol: 'Abm7',
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1, 6],
+      diagram: [[1, 2], [1, 5], [2, 4]]
+    },
+    {
+      id: 2262,
+      symbol: 'A#maj9',
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1, 6],
+      diagram: [[1, 2], [1, 5], [2, 4]]
+    },
+    {
+      id: 2245,
+      symbol: 'G#m7(9)(11)',
+      bar: 22,
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      mutedStrings: [6],
+      diagram: [[3, 4], [4, 1], [4, 3]]
+    }, {
+      id: 2244,
+      symbol: 'F#m7(9)(11)',
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      mutedStrings: [6],
+      diagram: [[1, 4], [2, 1], [2, 3]]
+    }, {
+      id: 2243,
+      symbol: 'D#m7(9)(11)',
+      startFret: 4,
+      bar: 13,
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1],
+      diagram: [[3, 2], [3, 4], [3, 5]]
+    }, {
+      id: 2242,
+      symbol: 'C#m7(9)(11)',
+      bar: 23,
+      bassString: 2,
+      soundedStrings: [3, 4, 5, 6],
+      mutedStrings: [1],
+      diagram: [[4, 2], [4, 4], [4, 5]]
+    }, {
+      id: 2241,
+      symbol: 'A#m7(9)(11)',
+      startFret: 4,
+      bar: 12,
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      diagram: [[2, 4], [3, 1], [3, 3]]
+    }, {
+      id: 2240,
+      symbol: 'Gbm7(9)(11)',
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      mutedStrings: [6],
+      diagram: [[1, 4], [2, 1], [2, 3]]
+    }, {
+      id: 2239,
+      symbol: 'Ebm7(9)(11)',
+      startFret: 4,
+      bar: 13,
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1],
+      diagram: [[3, 2], [3, 4], [3, 5]]
+    }, {
+      id: 2238,
+      symbol: 'Dbm7(9)(11)',
+      bar: 23,
+      bassString: 2,
+      soundedStrings: [3, 4, 5, 6],
+      mutedStrings: [1],
+      diagram: [[4, 2], [4, 4], [4, 5]]
+    }, {
+      id: 2237,
+      symbol: 'Bbm7(9)(11)',
+      startFret: 4,
+      bar: 12,
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      diagram: [[2, 4], [3, 1], [3, 3]]
+    }, {
+      id: 2236,
+      symbol: 'Abm7(9)(11)',
+      bar: 22,
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      mutedStrings: [6],
+      diagram: [[3, 4], [4, 1], [4, 3]]
+    }, {
+      id: 2235,
+      symbol: 'Gm7(9)(11)',
+      bar: 12,
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      mutedStrings: [6],
+      diagram: [[2, 4], [3, 1], [3, 3]]
+    }, {
+      id: 2234,
+      symbol: 'Fm7(9)(11)',
+      startFret: 6,
+      bar: 13,
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1],
+      diagram: [[3, 2], [3, 4], [3, 5]]
+    }, {
+      id: 2233,
+      symbol: 'Em7(9)(11)',
+      startFret: 5,
+      bar: 13,
+      bassString: 2,
+      soundedStrings: [3, 4, 5],
+      mutedStrings: [1],
+      diagram: [[3, 2], [3, 4], [3, 5]]
+    }, {
+      id: 2232,
+      symbol: 'Dm7(9)(11)',
+      bar: 33,
+      bassString: 2,
+      soundedStrings: [3, 4, 5, 6],
+      mutedStrings: [1],
+      diagram: [[5, 2], [5, 4], [5, 5]]
+    }, {
+      id: 2231,
+      symbol: 'Cm7(9)(11)',
+      bar: 13,
+      bassString: 2,
+      soundedStrings: [3, 4, 5, 6],
+      mutedStrings: [1],
+      diagram: [[3, 2], [3, 4], [3, 5]]
+    }, {
+      id: 2230,
+      symbol: 'Bm7(9)(11)',
+      bassString: 2,
+      soundedStrings: [3, 4, 5, 6],
+      mutedStrings: [1],
+      diagram: [[2, 2], [2, 4], [2, 5]]
+    }, {
+      id: 2229,
+      symbol: 'Am7(9)(11)',
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      mutedStrings: [6],
+      diagram: [[3, 2], [4, 4], [5, 1], [5, 3]]
+    }, {
+      id: 2228,
+      symbol: 'G#m(b6)',
+      startFret: 4,
+      bar: 11,
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5],
+      diagram: [[2, 5], [3, 3], [4, 2]]
+    }, {
+      id: 2227,
+      symbol: 'F#m(b6)',
+      bar: 21,
+      bassString: 1,
+      soundedStrings: [2, 3, 4, 5, 6],
+      diagram: [[3, 5], [4, 3], [5, 2]]
+    }]
+};
 
 
 const lyricDemo = `

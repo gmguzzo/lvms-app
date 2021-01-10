@@ -1,0 +1,14 @@
+.chords-svg {
+  max-width: 300px !important;
+}
+
+.chord-position {
+  max-width: 100px !important;
+  margin-left: -35px;
+  width: 100%;
+  background-color: white;
+  padding: 4px;
+  border-radius: 4px;
+  z-index: 99;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,.04), 0 2px 4px 0 rgba(0,0,0,.04), 0 0 4px 0 rgba(0,0,0,.04);
+}

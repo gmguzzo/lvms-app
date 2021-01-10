@@ -4,6 +4,7 @@ import { LyricDetailsComponent } from './containers/lyric-details/lyric-details.
 import { RouterModule } from '@angular/router';
 import { LyricsRoutes } from './lyrics.routing';
 import { SharedModule } from '../shared/shared.module';
+import { SvguitarchordService } from './services/svguitarchord.service';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     RouterModule.forChild(LyricsRoutes),
     SharedModule
+  ],
+  providers: [
+    SvguitarchordService
   ]
 })
 export class LyricsModule {

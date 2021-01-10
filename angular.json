@@ -60,7 +60,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/chordsheetjs/lib/chordsheet.js"
+              "./node_modules/chordsheetjs/lib/chordsheet.js",
+              "./node_modules/svguitar/dist/lib/svguitar.js"
             ]
           },
           "configurations": {
