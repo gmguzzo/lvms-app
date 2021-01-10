@@ -18,6 +18,12 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { FooterComponent } from './components/footer/footer.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { SearchInputOverComponent } from './components/search/search-input-over/search-input-over.component';
+import { LayoutService } from './services/layout.service';
+import { MatchMediaService } from './services/match-media.service';
+import { NavigationService } from './services/navigation.service';
+import { RoutePartsService } from './services/route-parts.service';
+import { ThemeService } from './services/theme.service';
+import { UILibIconService } from './services/ui-lib-icon.service';
 
 const componentsShared = [
   AuthLayoutComponent,
@@ -54,6 +60,14 @@ const declarations = [
   exports: [
     ...componentsShared,
     ...declarations
+  ],
+  providers: [
+    UILibIconService,
+    LayoutService,
+    MatchMediaService,
+    NavigationService,
+    RoutePartsService,
+    ThemeService
   ]
 })
 export class SharedModule {

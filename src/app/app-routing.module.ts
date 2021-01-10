@@ -24,15 +24,23 @@ const routes: Routes = [
       {
         path: 'sessions',
         loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule),
-        data: { title: 'Session'}
+        data: { title: 'Session' }
       }
     ]
   },
   {
     path: '',
     component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
-    children: []
+    // canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'musica',
+        loadChildren: () => import('./lyrics/lyrics.module').then(m => m.LyricsModule),
+        data: {
+          title: 'Música'
+        }
+      }
+    ]
   },
   {
     path: '**',

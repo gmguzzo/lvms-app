@@ -34,7 +34,7 @@
             [notificPanel]='notificationPanel'>
           </app-header-side>
 
-          <div class='rightside-content-hold' id='rightside-content-hold' [perfectScrollbar]='scrollConfig'
+          <div class='rightside-content-hold padding-left-right-24 mb-padding-left-right-16' id='rightside-content-hold' [perfectScrollbar]='scrollConfig'
                [disabled]='!layoutConf.topbarFixed || !layoutConf.perfectScrollbar'>
             <!-- View Loader -->
             <div class='view-loader' *ngIf='isModuleLoading' style='position:fixed;'
@@ -51,10 +51,11 @@
               <router-outlet></router-outlet>
             </div>
             <span class='m-auto' *ngIf='!layoutConf.footerFixed'></span>
-            <app-footer *ngIf='!layoutConf.footerFixed' style='margin: 0 -.33rem -.33rem'></app-footer>
+<!--            <app-footer *ngIf='!layoutConf.footerFixed' style='margin: 0 -.33rem -.33rem'></app-footer>-->
           </div>
+
           <span class='m-auto' *ngIf='layoutConf.footerFixed'></span>
-          <app-footer *ngIf='layoutConf.footerFixed'></app-footer>
+<!--          <app-footer *ngIf='layoutConf.footerFixed'></app-footer>-->
         </div>
         <!-- View overlay for mobile navigation -->
         <div class='sidebar-backdrop'
@@ -74,6 +75,3 @@
     </mat-sidenav-container>
   </div>
 </div>
-<!-- Only for demo purpose -->
-<!-- Remove this from your production version -->
-<!--<app-customizer></app-customizer>-->

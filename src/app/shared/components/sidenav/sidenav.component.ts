@@ -11,19 +11,4 @@ export class SidenavComponent {
 
   constructor() {
   }
-
-  // Only for demo purpose
-  addMenuItem() {
-    this.menuItems.push({
-      name: 'ITEM',
-      type: 'dropDown',
-      tooltip: 'Item',
-      icon: 'done',
-      state: 'material',
-      sub: [
-        { name: 'SUBITEM', state: 'cards' },
-        { name: 'SUBITEM', state: 'buttons' }
-      ]
-    });
-  }
 }

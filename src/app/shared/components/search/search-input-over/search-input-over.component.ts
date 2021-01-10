@@ -18,7 +18,7 @@ export class SearchInputOverComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:no-input-rename
   @Input('placeholder') placeholder = 'Search here';
 
-  // tslint:disable-next-line:no-input-rename
+  // tslint:disable-next-line:no-input-rename no-output-rename
   @Output('search') search = new EventEmitter();
   searchCtrl = new FormControl();
   searchCtrlSub: Subscription | undefined;
