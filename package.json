@@ -33,13 +33,14 @@
     "@ngrx/schematics": "^10.1.2",
     "@ngrx/store": "^10.1.2",
     "@ngrx/store-devtools": "^10.1.2",
+    "@types/chordsheetjs": "^2.8.0",
     "chordsheetjs": "^4.0.0",
+    "highlight.js": "10.1.1",
     "ngx-custom-validators": "^11.0.1",
     "ngx-perfect-scrollbar": "^10.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
-    "highlight.js": "10.1.1"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.5",

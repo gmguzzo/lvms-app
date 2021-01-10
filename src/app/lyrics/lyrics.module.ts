@@ -5,13 +5,14 @@ import { RouterModule } from '@angular/router';
 import { LyricsRoutes } from './lyrics.routing';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
-  declarations: [LyricDetailsComponent],
+  declarations: [
+    LyricDetailsComponent
+  ],
   imports: [
     CommonModule,
-    SharedModule,
-    RouterModule.forChild(LyricsRoutes)
+    RouterModule.forChild(LyricsRoutes),
+    SharedModule
   ]
 })
 export class LyricsModule {

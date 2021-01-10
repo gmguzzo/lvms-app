@@ -1262,6 +1262,11 @@
     semver "7.3.2"
     semver-intersect "1.4.0"
 
+"@types/chordsheetjs@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@types/chordsheetjs/-/chordsheetjs-2.8.0.tgz#40dee31d949ab935f62a7592c1a381784c8f7e2d"
+  integrity sha512-EcJVBXQ6tocs4ZrNrYv9lnIiplRWhjaxDCvVUICDD1q+iHTXBbT+GU590+y4FiJdjqAARihtS1rJrUmu8tN4tA==
+
 "@types/glob@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.3.tgz#e6ba80f36b7daad2c685acd9266382e68985c183"
