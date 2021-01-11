@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,21 @@ const routes: Routes = [
       {
         path: 'sessions',
         loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule),
-        data: { title: 'Session'}
+        data: { title: 'Session' }
+      }
+    ]
+  },
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    // canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'musica',
+        loadChildren: () => import('./lyrics/lyrics.module').then(m => m.LyricsModule),
+        data: {
+          title: 'Música'
+        }
       }
     ]
   },

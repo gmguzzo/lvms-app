@@ -52,7 +52,7 @@
       "timeEnd",
       "trace"
     ],
-    "no-any": true,
+    "no-string-literal": false,
     "no-empty": false,
     "no-inferrable-types": [
       true,
@@ -110,7 +110,8 @@
       "options": [
         "ban-keywords",
         "check-format",
-        "allow-pascal-case"
+        "allow-pascal-case",
+        "allow-leading-underscore"
       ]
     },
     "whitespace": {

@@ -50,18 +50,17 @@ $utilities: (
       null: 1px solid rgba(255, 255, 255, 0.1)
     )
   ),
-
   "font-weight": (
-      property: font-weight,
-      values: (
-        light: 300,
-        lighter: lighter,
-        normal: 400,
-        semi: 500,
-        bold: 600,
-        bolder: bolder
-      )
-    ),
+    property: font-weight,
+    values: (
+      light: 300,
+      lighter: lighter,
+      normal: 400,
+      semi: 500,
+      bold: 600,
+      bolder: bolder
+    )
+  ),
 );
 
 @import "avatar";
@@ -69,8 +68,6 @@ $utilities: (
 @import "icons";
 @import "spacing";
 @import "others";
-
-
 
 
 @import "base/functions";
