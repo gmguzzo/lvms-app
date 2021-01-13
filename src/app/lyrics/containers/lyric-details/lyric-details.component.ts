@@ -96,197 +96,37 @@ export class LyricDetailsComponent implements OnInit, AfterViewInit {
 const listChords: any = {
   chords: [
     {
-      id: 22621,
-      symbol: 'G#m',
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1, 6],
-      diagram: [[1, 2], [1, 5], [2, 4]]
-    },
-    {
-      id: 22622,
-      symbol: 'E',
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1, 6],
-      diagram: [[1, 2], [1, 5], [2, 4]]
-    },
-    {
-      id: 22623,
-      symbol: 'C#m',
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1, 6],
-      diagram: [[1, 2], [1, 5], [2, 4]]
-    },
-    {
-      id: 22624,
-      symbol: 'Abm7',
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1, 6],
-      diagram: [[1, 2], [1, 5], [2, 4]]
-    },
-    {
-      id: 2262,
-      symbol: 'A#maj9',
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1, 6],
-      diagram: [[1, 2], [1, 5], [2, 4]]
-    },
-    {
-      id: 2245,
-      symbol: 'G#m7(9)(11)',
-      bar: 22,
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      mutedStrings: [6],
-      diagram: [[3, 4], [4, 1], [4, 3]]
-    }, {
-      id: 2244,
-      symbol: 'F#m7(9)(11)',
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      mutedStrings: [6],
-      diagram: [[1, 4], [2, 1], [2, 3]]
-    }, {
-      id: 2243,
-      symbol: 'D#m7(9)(11)',
-      startFret: 4,
-      bar: 13,
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1],
-      diagram: [[3, 2], [3, 4], [3, 5]]
-    }, {
-      id: 2242,
-      symbol: 'C#m7(9)(11)',
-      bar: 23,
-      bassString: 2,
-      soundedStrings: [3, 4, 5, 6],
-      mutedStrings: [1],
-      diagram: [[4, 2], [4, 4], [4, 5]]
-    }, {
-      id: 2241,
-      symbol: 'A#m7(9)(11)',
+      id: 719,
+      symbol: 'C#m7',
       startFret: 4,
       bar: 12,
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      diagram: [[2, 4], [3, 1], [3, 3]]
-    }, {
-      id: 2240,
-      symbol: 'Gbm7(9)(11)',
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      mutedStrings: [6],
-      diagram: [[1, 4], [2, 1], [2, 3]]
-    }, {
-      id: 2239,
-      symbol: 'Ebm7(9)(11)',
-      startFret: 4,
-      bar: 13,
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1],
-      diagram: [[3, 2], [3, 4], [3, 5]]
-    }, {
-      id: 2238,
-      symbol: 'Dbm7(9)(11)',
-      bar: 23,
       bassString: 2,
       soundedStrings: [3, 4, 5, 6],
       mutedStrings: [1],
-      diagram: [[4, 2], [4, 4], [4, 5]]
+      diagram: [[2, 5], [3, 3]]
+    }, { id: 546, symbol: 'G', bassString: 1, soundedStrings: [2, 3, 4, 5, 6], diagram: [[2, 2], [3, 1], [3, 6]] }, {
+      id: 279,
+      symbol: 'D',
+      bassString: 3,
+      soundedStrings: [4, 5, 6],
+      mutedStrings: [1, 2],
+      diagram: [[2, 4], [3, 5], [2, 6]]
     }, {
-      id: 2237,
-      symbol: 'Bbm7(9)(11)',
-      startFret: 4,
-      bar: 12,
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      diagram: [[2, 4], [3, 1], [3, 3]]
-    }, {
-      id: 2236,
-      symbol: 'Abm7(9)(11)',
-      bar: 22,
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      mutedStrings: [6],
-      diagram: [[3, 4], [4, 1], [4, 3]]
-    }, {
-      id: 2235,
-      symbol: 'Gm7(9)(11)',
-      bar: 12,
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      mutedStrings: [6],
-      diagram: [[2, 4], [3, 1], [3, 3]]
-    }, {
-      id: 2234,
-      symbol: 'Fm7(9)(11)',
-      startFret: 6,
-      bar: 13,
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1],
-      diagram: [[3, 2], [3, 4], [3, 5]]
-    }, {
-      id: 2233,
-      symbol: 'Em7(9)(11)',
-      startFret: 5,
-      bar: 13,
-      bassString: 2,
-      soundedStrings: [3, 4, 5],
-      mutedStrings: [1],
-      diagram: [[3, 2], [3, 4], [3, 5]]
-    }, {
-      id: 2232,
-      symbol: 'Dm7(9)(11)',
-      bar: 33,
+      id: 178,
+      symbol: 'C',
       bassString: 2,
       soundedStrings: [3, 4, 5, 6],
       mutedStrings: [1],
-      diagram: [[5, 2], [5, 4], [5, 5]]
-    }, {
-      id: 2231,
-      symbol: 'Cm7(9)(11)',
-      bar: 13,
+      diagram: [[3, 2], [2, 3], [1, 5]]
+    }, { id: 4, symbol: 'E', bassString: 1, soundedStrings: [2, 3, 4, 5, 6], diagram: [[1, 4], [2, 2], [2, 3]] }, {
+      id: 1,
+      symbol: 'A',
       bassString: 2,
       soundedStrings: [3, 4, 5, 6],
       mutedStrings: [1],
-      diagram: [[3, 2], [3, 4], [3, 5]]
-    }, {
-      id: 2230,
-      symbol: 'Bm7(9)(11)',
-      bassString: 2,
-      soundedStrings: [3, 4, 5, 6],
-      mutedStrings: [1],
-      diagram: [[2, 2], [2, 4], [2, 5]]
-    }, {
-      id: 2229,
-      symbol: 'Am7(9)(11)',
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      mutedStrings: [6],
-      diagram: [[3, 2], [4, 4], [5, 1], [5, 3]]
-    }, {
-      id: 2228,
-      symbol: 'G#m(b6)',
-      startFret: 4,
-      bar: 11,
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5],
-      diagram: [[2, 5], [3, 3], [4, 2]]
-    }, {
-      id: 2227,
-      symbol: 'F#m(b6)',
-      bar: 21,
-      bassString: 1,
-      soundedStrings: [2, 3, 4, 5, 6],
-      diagram: [[3, 5], [4, 3], [5, 2]]
-    }]
+      diagram: [[2, 3], [2, 4], [2, 5]]
+    }
+  ]
 };
 
 

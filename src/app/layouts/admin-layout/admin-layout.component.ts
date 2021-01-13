@@ -2,7 +2,6 @@ import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, O
 import { NavigationEnd, ResolveEnd, ResolveStart, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { noop, Subscription } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
-import { ThemeService } from '../../shared/services/theme.service';
 import { ILayoutConf, LayoutService } from '../../shared/services/layout.service';
 import { JwtAuthService } from '../../shared/services/auth/jwt-auth.service';
 
@@ -24,7 +23,6 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private router: Router,
-    public themeService: ThemeService,
     private layout: LayoutService,
     private cdr: ChangeDetectorRef,
     private jwtAuth: JwtAuthService
@@ -47,14 +45,14 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.layoutConf = this.layout.layoutConf;
+
     this.layoutConfSub = this.layout.layoutConf$.subscribe((layoutConf) => {
       this.layoutConf = layoutConf;
-      // console.log(this.layoutConf);
-
       this.adminContainerClasses = this.updateAdminContainerClasses(this.layoutConf);
       this.cdr.markForCheck();
     });
+
+    this.layout.adjustLayout({});
 
     // FOR MODULE LOADER FLAG
     this.moduleLoaderSub = this.router.events.subscribe(event => {

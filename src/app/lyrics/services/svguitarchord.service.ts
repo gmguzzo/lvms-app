@@ -15,7 +15,7 @@ export class SvguitarchordService {
 
     // id: 2245,
     // symbol: 'G#m7(9)(11)',
-    // bar: 22,
+    // bar: [2,2],
     // bassString: 1,
     // startFret: 4,
     // soundedStrings: [2, 3, 4, 5],
@@ -27,18 +27,22 @@ export class SvguitarchordService {
     const mutedStringsF = this.chordMutedString(mutedStrings);
     const soundedStringsF = this.chordSoundedStrings(soundedStrings);
     const bassStringF = this.chordBassString(bassString);
+    const barF = this.chordBar(bar);
+
 
     const chord: Chord = {
+      // @ts-ignore
       fingers: [...soundedStringsF, ...bassStringF, ...diagramF, ...mutedStringsF],
       barres: [],
       title: symbol,
       position: startFret
     };
 
+    const [fret, toString] = barF;
     const barres = {
       fromString: this.getMinMax('max', soundedStrings),
-      toString: this.getMinMax('min', soundedStrings),
-      fret: 1
+      toString,
+      fret
     };
 
     if (bar > 1) {
@@ -57,7 +61,7 @@ export class SvguitarchordService {
     });
   }
 
-  private getReverseNumber(n: number) {
+  private getReverseNumber(n: number | string) {
     const reverseNumber: any = {
       1: 6,
       2: 5,
@@ -85,11 +89,10 @@ export class SvguitarchordService {
     if (diagram) {
       return diagram.map(d => {
         const arr: any = d || [];
-        // return arr.reverse();
-        return arr.reverse();
+        const [stringValue, position] = arr as any;
+        return [this.getReverseNumber(position), stringValue];
       });
     }
-
     return [];
   }
 
@@ -124,6 +127,15 @@ export class SvguitarchordService {
       ];
     }
     return [];
+  }
+
+  private chordBar(bar: ChordsModel['bar']) {
+    // mutedStrings: 62,
+    if (bar) {
+      const barArr = bar.toString().split('');
+      return barArr.map(b => parseInt(b, 10));
+    }
+    return [0, 0];
   }
 }
 

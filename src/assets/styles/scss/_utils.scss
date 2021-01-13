@@ -4,18 +4,11 @@
 $types: margin, padding;
 $positions: top, left, right, bottom;
 $sizes: 2, 4, 8, 16, 24, 32, 40, 48, 56;
-;
 
 @each $type in $types {
 
   .#{$type}-none {
     #{$type}: 0 !important;
-  }
-
-  @media screen and (max-width: 600px) {
-    .mb-#{$type}-none {
-      #{$type}: 0 !important;
-    }
   }
 
   @each $size in $sizes {
@@ -30,28 +23,12 @@ $sizes: 2, 4, 8, 16, 24, 32, 40, 48, 56;
     .#{$type}-top-bottom-#{$size} {
       #{$type}: $size+px 0;
     }
-
-    @media screen and (max-width: 600px) {
-      .mb-#{$type}-left-right-#{$size} {
-        #{$type}: 0 $size+px;
-      }
-
-      .mb-#{$type}-top-bottom-#{$size} {
-        #{$type}: $size+px 0;
-      }
-    }
   }
 
   @each $position in $positions {
 
     .#{$type}-#{$position}-none {
       #{$type}-#{$position}: 0 !important;
-    }
-
-    @media screen and (max-width: 600px) {
-      .mb-#{$type}-#{$position}-none {
-        #{$type}-#{$position}: 0 !important;
-      }
     }
 
     @each $size in $sizes {
@@ -63,8 +40,32 @@ $sizes: 2, 4, 8, 16, 24, 32, 40, 48, 56;
         #{$type}-#{$position}: $size+px !important;
       }
 
+    }
+  }
+}
 
-      @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
+  @each $type in $types {
+    .mb-#{$type}-none {
+      #{$type}: 0 !important;
+    }
+
+    @each $size in $sizes {
+      .mb-#{$type}-left-right-#{$size} {
+        #{$type}: 0 $size+px;
+      }
+
+      .mb-#{$type}-top-bottom-#{$size} {
+        #{$type}: $size+px 0;
+      }
+    }
+
+    @each $position in $positions {
+      .mb-#{$type}-#{$position}-none {
+        #{$type}-#{$position}: 0 !important;
+      }
+
+      @each $size in $sizes {
         .mb-#{$type}-#{$position}-#{$size} {
           #{$type}-#{$position}: $size+px;
         }
